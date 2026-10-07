@@ -17,3 +17,11 @@
     transform: translateY(-2px);
     background-color: #f8f9fa;
 }
+
+.d-block { 
+    display: block !important; 
+}
+
+.d-none { 
+    display: none !important; 
+}
