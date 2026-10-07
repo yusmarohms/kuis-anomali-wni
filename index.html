@@ -3,66 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff9ef">
+    <meta name="description" content="Jawab 5 pertanyaan seru dan cari tahu jenis Anomali WNI seperti apa kamu.">
     <title>Kuis Kepribadian: Kamu Anomali WNI yang Mana?</title>
-    
-    <!-- Bootstrap 5 CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-light d-flex align-items-center min-vh-100">
+<body class="min-h-screen">
+    <main class="quiz-shell relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 sm:px-6">
+        <div class="ambient ambient-one" aria-hidden="true"></div>
+        <div class="ambient ambient-two" aria-hidden="true"></div>
+        <div class="ambient ambient-three" aria-hidden="true"></div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                
-                <!-- Card Container untuk Kuis -->
-                <div class="card shadow-sm border-0 rounded-4 p-4 text-center">
-                    
-                    <!-- BAGIAN 1: Halaman Awal -->
-                    <div id="start-screen" class="d-block">
-                        <h1 class="h3 fw-bold mb-3 text-primary">Kuis Kepribadian: Anomali WNI</h1>
-                        <p class="text-muted mb-4">Cari tahu jenis "Anomali WNI" seperti apa kamu di dunia nyata! Jawab 5 pertanyaan ini dengan jujur.</p>
-                        <button id="start-btn" class="btn btn-primary btn-lg w-100 rounded-pill">Mulai Kuis</button>
+        <div class="relative z-10 w-full max-w-xl">
+            <div class="mb-5 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-600 sm:mb-7">
+                <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span>tes kecil, kenali diri</span>
+            </div>
+
+            <section class="quiz-card relative overflow-hidden rounded-[2rem] p-6 text-center sm:rounded-[2.5rem] sm:p-10" aria-label="Kuis kepribadian Anomali WNI">
+                <div class="card-topline" aria-hidden="true"></div>
+
+                <div id="start-screen" class="d-block">
+                    <div class="eyebrow mx-auto mb-5 w-fit rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider">kuis kepribadian · 5 soal</div>
+                    <div class="hero-art mx-auto mb-6" aria-hidden="true">
+                        <span class="hero-spark spark-a">✳</span>
+                        <span class="hero-spark spark-b">✦</span>
+                        <div class="hero-orbit orbit-one"></div>
+                        <div class="hero-orbit orbit-two"></div>
+                        <div class="hero-center"><span>?</span></div>
+                        <span class="hero-dot dot-a"></span>
+                        <span class="hero-dot dot-b"></span>
+                        <span class="hero-dot dot-c"></span>
                     </div>
-
-                    <!-- BAGIAN 2: Halaman Pertanyaan (Disembunyikan di awal pakai d-none) -->
-                    <div id="question-screen" class="d-none">
-                        <!-- Progress Bar Bootstrap -->
-                        <div class="progress mb-3" style="height: 10px;">
-                            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 20%;"></div>
-                        </div>
-                        <p id="progress-text" class="text-muted small fw-bold">Soal 1 dari 5</p>
-                        
-                        <h4 id="question-text" class="mb-4 fw-semibold">Teks pertanyaan akan muncul di sini</h4>
-                        
-                        <!-- Pilihan Ganda -->
-                        <div id="options-container" class="d-grid gap-2">
-                            <!-- Tombol akan disuntikkan dari JavaScript -->
-                        </div>
-                    </div>
-
-                    <!-- BAGIAN 3: Halaman Hasil (Disembunyikan di awal) -->
-                    <div id="result-screen" class="d-none">
-                        <p class="text-muted mb-1">Karakter aslimu adalah:</p>
-                        <h2 id="result-title" class="text-success fw-bold mb-3">Nama Anomali</h2>
-                        <div class="alert alert-info rounded-4 text-start">
-                            <p id="result-desc" class="mb-0">Deskripsi karakter akan muncul di sini.</p>
-                        </div>
-                        <button id="restart-btn" class="btn btn-outline-primary w-100 rounded-pill mt-3">Main Lagi</button>
-                    </div>
-
+                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">siap-siap ketahuan</p>
+                    <h1 class="display-title mb-4 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Kamu <span>Anomali</span><br>WNI yang mana?</h1>
+                    <p class="intro-copy mx-auto mb-8 max-w-sm text-base leading-7 sm:text-lg">Cari tahu tipe unikmu di dunia nyata. Jawab 5 pertanyaan ini dengan jujur—nggak ada jawaban yang salah.</p>
+                    <button id="start-btn" class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-bold sm:w-auto sm:min-w-64" type="button">
+                        Mulai kuis <span class="button-arrow" aria-hidden="true">→</span>
+                    </button>
+                    <p class="tiny-note mt-5 text-xs font-medium">Cuma butuh sebentar. Hasilnya? Sangat kamu.</p>
                 </div>
 
-            </div>
-        </div>
-    </div>
+                <div id="question-screen" class="d-none text-left">
+                    <div class="mb-7 flex items-center justify-between gap-4">
+                        <span class="eyebrow rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-wider">pilih yang paling kamu</span>
+                        <p id="progress-text" class="progress-label m-0 text-sm font-bold">Soal 1 dari 5</p>
+                    </div>
+                    <div class="progress-track mb-8" role="progressbar" aria-label="Kemajuan kuis" aria-valuemin="0" aria-valuemax="100">
+                        <div id="progress-bar" class="progress-fill" style="width: 20%;"></div>
+                    </div>
+                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">pertanyaan untukmu</p>
+                    <h2 id="question-text" class="question-title mb-7 text-2xl font-bold leading-snug sm:text-3xl" aria-live="polite">Teks pertanyaan akan muncul di sini</h2>
+                    <div id="options-container" class="d-grid gap-2" aria-label="Pilihan jawaban"></div>
+                </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Script Kuis -->
+                <div id="result-screen" class="d-none">
+                    <div class="result-confetti mx-auto mb-6" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">hasil investigasi selesai</p>
+                    <p class="result-intro mb-3 text-base font-semibold">Karakter aslimu adalah...</p>
+                    <h2 id="result-title" class="result-title mb-6 text-3xl font-bold leading-tight sm:text-4xl">Nama Anomali</h2>
+                    <div class="result-panel rounded-2xl p-5 text-left sm:p-6">
+                        <p id="result-desc" class="m-0 text-base leading-7">Deskripsi karakter akan muncul di sini.</p>
+                    </div>
+                    <button id="restart-btn" class="secondary-btn mt-7 w-full rounded-2xl px-6 py-4 text-base font-bold sm:w-auto sm:min-w-64" type="button">
+                        Main lagi <span class="button-arrow" aria-hidden="true">↻</span>
+                    </button>
+                </div>
+            </section>
+
+            <p class="footer-note mt-6 text-center text-xs font-semibold tracking-wide">BUAT SERU-SERUAN AJA · JANGAN DIANGGAP TERLALU SERIUS</p>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
