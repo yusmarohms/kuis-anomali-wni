@@ -84,6 +84,16 @@ const resultDesc = document.getElementById('result-desc');
 
 const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
+const themeToggle = document.getElementById('theme-toggle');
+const themeToggleLabel = themeToggle.querySelector('.theme-toggle-label');
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    themeToggle.setAttribute('aria-pressed', String(nextTheme === 'dark'));
+    themeToggle.title = nextTheme === 'dark' ? 'Aktifkan light mode' : 'Aktifkan dark mode';
+    themeToggleLabel.innerText = nextTheme === 'dark' ? 'Mode terang' : 'Mode gelap';
+});
 
 // Tombol Mulai ditekan
 startBtn.addEventListener('click', startQuiz);
