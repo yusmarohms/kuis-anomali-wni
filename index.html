@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#fff9ef">
+    <meta name="theme-color" content="#fff8ec">
     <meta name="description" content="Jawab 5 pertanyaan seru dan cari tahu jenis Anomali WNI seperti apa kamu.">
     <title>Kuis Kepribadian: Kamu Anomali WNI yang Mana?</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,57 +13,68 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen">
-    <main class="quiz-shell relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 sm:px-6">
+    <main class="quiz-shell relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-8 sm:px-6 sm:py-10">
         <div class="ambient ambient-one" aria-hidden="true"></div>
         <div class="ambient ambient-two" aria-hidden="true"></div>
         <div class="ambient ambient-three" aria-hidden="true"></div>
+        <div class="ambient ambient-four" aria-hidden="true"></div>
 
-        <div class="relative z-10 w-full max-w-xl">
-            <div class="mb-5 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-600 sm:mb-7">
-                <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-                <span>tes kecil, kenali diri</span>
-            </div>
+        <div class="relative z-10 w-full max-w-5xl">
+            <header class="topbar mb-5 flex items-center justify-between gap-4 sm:mb-6">
+                <div class="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.17em]">
+                    <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+                    <span class="topbar-label">tes kecil, kenali diri</span>
+                </div>
+                <button id="theme-toggle" class="theme-toggle inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2.5 text-xs font-bold" type="button" aria-label="Dark mode" aria-pressed="false" title="Aktifkan dark mode">
+                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m16.8 4.2.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6.6-1.5Z" fill="currentColor"/></svg>
+                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <span class="theme-toggle-label">Mode gelap</span>
+                </button>
+            </header>
 
-            <section class="quiz-card relative overflow-hidden rounded-[2rem] p-6 text-center sm:rounded-[2.5rem] sm:p-10" aria-label="Kuis kepribadian Anomali WNI">
+            <section class="quiz-card relative overflow-hidden rounded-[2rem] p-5 sm:rounded-[2.5rem] sm:p-8 lg:p-10" aria-label="Kuis kepribadian Anomali WNI">
                 <div class="card-topline" aria-hidden="true"></div>
 
                 <div id="start-screen" class="d-block">
-                    <div class="eyebrow mx-auto mb-5 w-fit rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider">kuis kepribadian · 5 soal</div>
-                    <div class="hero-art mx-auto mb-6" aria-hidden="true">
-                        <span class="hero-spark spark-a">✳</span>
-                        <span class="hero-spark spark-b">✦</span>
-                        <div class="hero-orbit orbit-one"></div>
-                        <div class="hero-orbit orbit-two"></div>
-                        <div class="hero-center"><span>?</span></div>
-                        <span class="hero-dot dot-a"></span>
-                        <span class="hero-dot dot-b"></span>
-                        <span class="hero-dot dot-c"></span>
+                    <div class="start-layout">
+                        <div class="hero-panel">
+                            <div class="hero-image-frame">
+                                <img class="hero-image" src="/images/kuis-anomali-hero.png" alt="Ilustrasi ceria berisi es teh, helm, tas belanja, minyak angin, dan ekskavator mini">
+                                <span class="hero-sticker sticker-top" aria-hidden="true">✳</span>
+                                <span class="hero-sticker sticker-bottom" aria-hidden="true">ANOMALI CLUB</span>
+                            </div>
+                            <div class="hero-caption"><span class="caption-dot" aria-hidden="true"></span> lima soal, satu kepribadian unik</div>
+                        </div>
+
+                        <div class="start-copy text-center lg:text-left">
+                            <div class="eyebrow mx-auto mb-4 w-fit rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.16em] lg:mx-0">kuis kepribadian <span aria-hidden="true">·</span> 5 soal</div>
+                            <p class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]">siap-siap ketahuan</p>
+                            <h1 class="display-title mb-4 text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl">Kamu <span>Anomali</span><br>WNI yang mana?</h1>
+                            <p class="intro-copy mx-auto mb-7 max-w-md text-base leading-7 lg:mx-0">Cari tahu tipe unikmu di dunia nyata. Jawab 5 pertanyaan ini dengan jujur—nggak ada jawaban yang salah.</p>
+                            <button id="start-btn" class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-extrabold sm:w-auto sm:min-w-64" type="button">
+                                Mulai kuis <span class="button-arrow" aria-hidden="true">→</span>
+                            </button>
+                            <p class="tiny-note mt-5 text-xs font-semibold">Cuma butuh sebentar. Hasilnya? Sangat kamu.</p>
+                        </div>
                     </div>
-                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">siap-siap ketahuan</p>
-                    <h1 class="display-title mb-4 text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">Kamu <span>Anomali</span><br>WNI yang mana?</h1>
-                    <p class="intro-copy mx-auto mb-8 max-w-sm text-base leading-7 sm:text-lg">Cari tahu tipe unikmu di dunia nyata. Jawab 5 pertanyaan ini dengan jujur—nggak ada jawaban yang salah.</p>
-                    <button id="start-btn" class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-bold sm:w-auto sm:min-w-64" type="button">
-                        Mulai kuis <span class="button-arrow" aria-hidden="true">→</span>
-                    </button>
-                    <p class="tiny-note mt-5 text-xs font-medium">Cuma butuh sebentar. Hasilnya? Sangat kamu.</p>
                 </div>
 
-                <div id="question-screen" class="d-none text-left">
+                <div id="question-screen" class="d-none mx-auto w-full max-w-2xl text-left">
                     <div class="mb-7 flex items-center justify-between gap-4">
-                        <span class="eyebrow rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-wider">pilih yang paling kamu</span>
+                        <span class="eyebrow rounded-full px-3 py-2 text-[11px] font-extrabold uppercase tracking-wider">pilih yang paling kamu</span>
                         <p id="progress-text" class="progress-label m-0 text-sm font-bold">Soal 1 dari 5</p>
                     </div>
                     <div class="progress-track mb-8" role="progressbar" aria-label="Kemajuan kuis" aria-valuemin="0" aria-valuemax="100">
                         <div id="progress-bar" class="progress-fill" style="width: 20%;"></div>
                     </div>
-                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">pertanyaan untukmu</p>
+                    <p class="section-kicker mb-3 text-xs font-extrabold uppercase tracking-[0.2em]">pertanyaan untukmu</p>
                     <h2 id="question-text" class="question-title mb-7 text-2xl font-bold leading-snug sm:text-3xl" aria-live="polite">Teks pertanyaan akan muncul di sini</h2>
                     <div id="options-container" class="d-grid gap-2" aria-label="Pilihan jawaban"></div>
                 </div>
 
-                <div id="result-screen" class="d-none">
-                    <div class="result-confetti mx-auto mb-6" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-                    <p class="section-kicker mb-3 text-xs font-bold uppercase tracking-[0.22em]">hasil investigasi selesai</p>
+                <div id="result-screen" class="d-none mx-auto w-full max-w-2xl text-center">
+                    <div class="result-confetti mx-auto mb-5" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <p class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]">hasil investigasi selesai</p>
                     <p class="result-intro mb-3 text-base font-semibold">Karakter aslimu adalah...</p>
                     <h2 id="result-title" class="result-title mb-6 text-3xl font-bold leading-tight sm:text-4xl">Nama Anomali</h2>
                     <div class="result-panel rounded-2xl p-5 text-left sm:p-6">
@@ -75,7 +86,7 @@
                 </div>
             </section>
 
-            <p class="footer-note mt-6 text-center text-xs font-semibold tracking-wide">BUAT SERU-SERUAN AJA · JANGAN DIANGGAP TERLALU SERIUS</p>
+            <p class="footer-note mt-5 text-center text-[10px] font-bold tracking-[0.15em]">BUAT SERU-SERUAN AJA <span aria-hidden="true">·</span> JANGAN DIANGGAP TERLALU SERIUS</p>
         </div>
     </main>
     <script src="script.js"></script>
