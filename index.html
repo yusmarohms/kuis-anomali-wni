@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Kepribadian: Kamu Anomali WNI yang Mana?</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light d-flex align-items-center min-vh-100">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <!-- Card Container untuk Kuis -->
+                <div class="card shadow-sm border-0 rounded-4 p-4 text-center">
+                    
+                    <!-- BAGIAN 1: Halaman Awal -->
+                    <div id="start-screen" class="d-block">
+                        <h1 class="h3 fw-bold mb-3 text-primary">Kuis Kepribadian: Anomali WNI</h1>
+                        <p class="text-muted mb-4">Cari tahu jenis "Anomali WNI" seperti apa kamu di dunia nyata! Jawab 5 pertanyaan ini dengan jujur.</p>
+                        <button id="start-btn" class="btn btn-primary btn-lg w-100 rounded-pill">Mulai Kuis</button>
+                    </div>
+
+                    <!-- BAGIAN 2: Halaman Pertanyaan (Disembunyikan di awal pakai d-none) -->
+                    <div id="question-screen" class="d-none">
+                        <!-- Progress Bar Bootstrap -->
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 20%;"></div>
+                        </div>
+                        <p id="progress-text" class="text-muted small fw-bold">Soal 1 dari 5</p>
+                        
+                        <h4 id="question-text" class="mb-4 fw-semibold">Teks pertanyaan akan muncul di sini</h4>
+                        
+                        <!-- Pilihan Ganda -->
+                        <div id="options-container" class="d-grid gap-2">
+                            <!-- Tombol akan disuntikkan dari JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN 3: Halaman Hasil (Disembunyikan di awal) -->
+                    <div id="result-screen" class="d-none">
+                        <p class="text-muted mb-1">Karakter aslimu adalah:</p>
+                        <h2 id="result-title" class="text-success fw-bold mb-3">Nama Anomali</h2>
+                        <div class="alert alert-info rounded-4 text-start">
+                            <p id="result-desc" class="mb-0">Deskripsi karakter akan muncul di sini.</p>
+                        </div>
+                        <button id="restart-btn" class="btn btn-outline-primary w-100 rounded-pill mt-3">Main Lagi</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script Kuis -->
+    <script src="script.js"></script>
+</body>
+</html>

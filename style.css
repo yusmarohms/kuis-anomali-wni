@@ -1,0 +1,19 @@
+/* style.css - Tambahan estetik kecil */
+
+/* Transisi halus saat ganti halaman */
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animasi untuk tombol pilihan ganda yang di-generate JS */
+.btn-option {
+    transition: transform 0.2s, background-color 0.2s;
+    text-align: left;
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.btn-option:hover {
+    transform: translateY(-2px);
+    background-color: #f8f9fa;
+}
