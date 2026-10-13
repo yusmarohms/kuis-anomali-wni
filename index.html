@@ -165,8 +165,24 @@
                 </p>
                 <label class="timer-setting" for="timer-enabled">
                   <input id="timer-enabled" type="checkbox" checked />
-                  <span>Mode timer 30 detik per soal</span>
+                  <span id="timer-setting-text">Mode timer 30 detik per soal</span>
                 </label>
+                <fieldset class="quiz-setting">
+                  <legend>Jumlah soal</legend>
+                  <div class="segmented">
+                    <label><input type="radio" name="question-count" value="5" /><span>5</span></label>
+                    <label><input type="radio" name="question-count" value="10" checked /><span>10</span></label>
+                    <label><input type="radio" name="question-count" value="all" /><span>Semua</span></label>
+                  </div>
+                </fieldset>
+                <fieldset class="quiz-setting">
+                  <legend>Durasi per soal</legend>
+                  <div class="segmented">
+                    <label><input type="radio" name="timer-seconds" value="15" /><span>15 dtk</span></label>
+                    <label><input type="radio" name="timer-seconds" value="30" checked /><span>30 dtk</span></label>
+                    <label><input type="radio" name="timer-seconds" value="60" /><span>60 dtk</span></label>
+                  </div>
+                </fieldset>
                 <button
                   id="start-btn"
                   class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-extrabold sm:w-auto sm:min-w-64"
@@ -195,6 +211,10 @@
                   🎮 Sudah dimainkan <span class="play-count">0</span> kali di
                   perangkat ini
                 </p>
+                <button id="reset-data-btn" class="reset-data-btn" type="button">
+                  Hapus data lokal
+                </button>
+                <p id="reset-status" class="reset-status" role="status" aria-live="polite"></p>
               </div>
             </div>
           </div>

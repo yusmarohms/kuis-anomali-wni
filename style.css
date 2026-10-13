@@ -637,6 +637,7 @@ html[data-theme="dark"] .hero-image {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
   }
 }
 
@@ -1031,4 +1032,96 @@ html[data-theme="dark"] .share-status {
 
 .result-actions {
   flex-wrap: wrap;
+}
+
+/* ---------- Pengaturan kuis & reset data ---------- */
+.quiz-setting {
+  border: 0;
+  min-width: 0;
+  margin: 0 auto 1rem;
+  padding: 0;
+  text-align: center;
+}
+.quiz-setting legend {
+  margin: 0 auto 0.4rem;
+  padding: 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.segmented {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 0.25rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: var(--panel-bg);
+}
+.segmented label {
+  position: relative;
+  cursor: pointer;
+}
+.segmented input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.segmented span {
+  display: inline-block;
+  min-width: 3.25rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+.segmented input:checked + span {
+  color: #fff;
+  background: linear-gradient(105deg, #f06056, #e84e73 58%, #9a65d8);
+}
+.segmented input:focus-visible + span {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+.segmented input:disabled + span {
+  opacity: 0.45;
+}
+.segmented label:has(input:disabled) {
+  cursor: not-allowed;
+}
+.reset-data-btn {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.reset-data-btn:hover {
+  color: var(--coral);
+}
+.reset-status {
+  min-height: 1rem;
+  margin: 0.4rem auto 0;
+  color: var(--mint);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .quiz-setting,
+  .reset-data-btn,
+  .reset-status {
+    margin-left: 0;
+  }
 }

@@ -21,3 +21,9 @@ export function storageGetJSON(key, fallback = []) {
     return fallback;
   }
 }
+export function storageRemove(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch {
+  }
+}

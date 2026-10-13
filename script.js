@@ -1,5 +1,10 @@
 import { questions, resultsData } from "./data.js";
-import { storageGet, storageSet, storageGetJSON } from "./storage.js";
+import {
+  storageGet,
+  storageSet,
+  storageGetJSON,
+  storageRemove,
+} from "./storage.js";
 import {
   setSoundEnabled,
   sfxClick,
@@ -7,7 +12,12 @@ import {
   sfxBack,
   sfxResult,
 } from "./sound.js";
-import { createQuizTimer, QUESTION_SECONDS, URGENT_SECONDS } from "./timer.js";
+import {
+  createQuizTimer,
+  QUESTION_SECONDS,
+  URGENT_SECONDS,
+  TIMER_OPTIONS,
+} from "./timer.js";
 
 // ==========================================
 // LOGIKA KUIS
@@ -20,6 +30,13 @@ const SOUND_KEY = "kuisAnomaliSound"; // "on" / "off"
 const UNLOCKED_KEY = "kuisAnomaliUnlocked"; // daftar hasil yang pernah didapat
 const LAST_RESULT_KEY = "kuisAnomaliLastResult"; // hasil terakhir
 const OPTION_STAGGER_MS = 70; // jeda muncul tiap opsi jawaban
+const QUESTION_COUNT_KEY = "kuisAnomaliQuestionCount"; // "5" / "10" / "all"
+const TIMER_SECONDS_KEY = "kuisAnomaliTimerSeconds"; // "15" / "30" / "60"
+const QUESTION_COUNT_OPTIONS = ["5", "10", "all"];
+const DEFAULT_QUESTION_COUNT = "10";
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+);
 
 // ---------- State ----------
 let quizQuestions = []; // soal yang sudah diacak (salinan dari `questions`)
@@ -33,6 +50,8 @@ let screenBeforeAll = null; // layar asal saat membuka "Semua hasil"
 let timerEnabled = storageGet("kuisAnomaliTimer") !== "off";
 let timer = null;
 let soundEnabledLocal = true;
+let questionCountSetting = loadQuestionCount(); // "5", "10", atau "all"
+let timerSeconds = loadTimerSeconds(); // durasi per soal (detik)
 
 // ---------- Elemen HTML ----------
 const startScreen = document.getElementById("start-screen");
@@ -89,6 +108,11 @@ const whatsappBtn = document.getElementById("share-wa-btn");
 const xShareBtn = document.getElementById("share-x-btn");
 const telegramBtn = document.getElementById("share-telegram-btn");
 const RESULT_COUNTS_KEY = "kuisAnomaliResultCounts";
+const timerSettingText = document.getElementById("timer-setting-text");
+const timerSecondsInputs = document.querySelectorAll('input[name="timer-seconds"]');
+const questionCountInputs = document.querySelectorAll('input[name="question-count"]');
+const resetDataBtn = document.getElementById("reset-data-btn");
+const resetStatus = document.getElementById("reset-status");
 
 // ==========================================
 // UTILITAS
@@ -139,7 +163,7 @@ function resetState() {
     scores[key] = 0;
   });
   quizQuestions = shuffle(questions)
-    .slice(0, 10)
+    .slice(0, getQuestionTotal())
     .map((q) => ({
       ...q,
       answers: shuffle(q.answers),
@@ -208,7 +232,10 @@ function renderTimer(milliseconds, totalSeconds = QUESTION_SECONDS) {
   if (timerText.textContent !== visibleTimerText)
     timerText.textContent = visibleTimerText;
   const announcement = document.getElementById("timer-announcement");
-  if (announcement && [30, 20, 10, 5, 4, 3, 2, 1].includes(seconds)) {
+  if (
+    announcement &&
+    (seconds === totalSeconds || [20, 10, 5, 4, 3, 2, 1].includes(seconds))
+  ) {
     const message =
       seconds > 10
         ? `Waktu tersisa ${seconds} detik.`
@@ -223,6 +250,7 @@ function renderTimer(milliseconds, totalSeconds = QUESTION_SECONDS) {
 function updateTimerSetting() {
   timerEnabled = timerEnabledInput.checked;
   storageSet("kuisAnomaliTimer", timerEnabled ? "on" : "off");
+  renderQuizSettings();
 }
 function stopTimer() {
   if (timer) timer.stop();
@@ -242,17 +270,63 @@ function startTimer() {
     return;
   }
   track.classList.remove("d-none");
-  if (!timer)
-    timer = createQuizTimer({
-      onTick: (milliseconds, seconds) => renderTimer(milliseconds, seconds),
-      onTimeout: handleTimeout,
-    });
+  timer = createQuizTimer({
+    onTick: (milliseconds, seconds) => renderTimer(milliseconds, seconds),
+    onTimeout: handleTimeout,
+    seconds: timerSeconds,
+  });
   timer.start();
 }
 
 // ==========================================
 // ALUR KUIS
 // ==========================================
+
+// ---------- Pengaturan jumlah soal, durasi timer, dan reset data ----------
+function loadQuestionCount() {
+  const saved = storageGet(QUESTION_COUNT_KEY);
+  return QUESTION_COUNT_OPTIONS.includes(saved) ? saved : DEFAULT_QUESTION_COUNT;
+}
+
+function loadTimerSeconds() {
+  const saved = Number(storageGet(TIMER_SECONDS_KEY));
+  return TIMER_OPTIONS.includes(saved) ? saved : QUESTION_SECONDS;
+}
+
+// Jumlah soal yang dimainkan: 5, 10, atau semua soal yang tersedia.
+function getQuestionTotal() {
+  if (questionCountSetting === "all") return questions.length;
+  return Math.min(Number(questionCountSetting), questions.length);
+}
+
+// Menyamakan tampilan pengaturan di layar awal dengan nilai yang tersimpan.
+function renderQuizSettings() {
+  questionCountInputs.forEach((input) => {
+    input.checked = input.value === questionCountSetting;
+  });
+  timerSecondsInputs.forEach((input) => {
+    input.checked = Number(input.value) === timerSeconds;
+    input.disabled = !timerEnabled;
+  });
+  timerSettingText.textContent = timerEnabled
+    ? `Mode timer ${timerSeconds} detik per soal`
+    : "Mode timer nonaktif";
+}
+
+// Menghapus progres (jumlah main, koleksi, hasil terakhir). Preferensi tetap disimpan.
+function resetLocalData() {
+  const confirmed = window.confirm(
+    "Hapus jumlah main, koleksi hasil, dan hasil terakhir di perangkat ini? Pengaturan (tema, suara, timer, jumlah soal) tetap disimpan.",
+  );
+  if (!confirmed) return;
+  [PLAY_COUNT_KEY, UNLOCKED_KEY, LAST_RESULT_KEY, RESULT_COUNTS_KEY].forEach(
+    storageRemove,
+  );
+  renderPlayCount();
+  renderLastResultNote();
+  if (isScreenVisible(allResultsScreen)) renderAllResults();
+  resetStatus.textContent = "Data lokal sudah dihapus.";
+}
 
 function startQuiz() {
   resetState();
@@ -276,7 +350,9 @@ function showQuestion() {
     const button = document.createElement("button");
     button.type = "button";
     button.classList.add("btn", "btn-outline-primary", "btn-option", "fade-in");
-    button.style.animationDelay = `${index * OPTION_STAGGER_MS}ms`;
+    button.style.animationDelay = prefersReducedMotion.matches
+      ? "0ms"
+      : `${index * OPTION_STAGGER_MS}ms`;
     button.setAttribute("aria-keyshortcuts", String(index + 1));
 
     const key = document.createElement("span");
@@ -875,6 +951,20 @@ telegramBtn.addEventListener("click", () =>
 );
 timerEnabledInput.checked = timerEnabled;
 timerEnabledInput.addEventListener("change", updateTimerSetting);
+questionCountInputs.forEach((input) =>
+  input.addEventListener("change", () => {
+    questionCountSetting = input.value;
+    storageSet(QUESTION_COUNT_KEY, input.value);
+  }),
+);
+timerSecondsInputs.forEach((input) =>
+  input.addEventListener("change", () => {
+    timerSeconds = Number(input.value);
+    storageSet(TIMER_SECONDS_KEY, String(timerSeconds));
+    renderQuizSettings();
+  }),
+);
+resetDataBtn.addEventListener("click", resetLocalData);
 backBtn.addEventListener("click", goBack);
 showAllBtn.addEventListener("click", openAllResults);
 resultAllBtn.addEventListener("click", openAllResults);
@@ -892,3 +982,4 @@ loadSoundPreference();
 resetState();
 renderPlayCount();
 renderLastResultNote();
+renderQuizSettings();

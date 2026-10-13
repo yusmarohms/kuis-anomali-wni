@@ -434,31 +434,47 @@ export const questions = [
 
 // ---------- Daftar 5 hasil ----------
 // `image`  : path gambar hasil (taruh file-nya di folder images/).
+// `desc`, `traits`, `suitable`, `quote` : teks halaman hasil.
 // `emoji`  : cadangan yang tampil kalau gambar belum ada / gagal dimuat.
 export const resultsData = {
   A: {
     title: "Tukang Parkir Gaib Minimarket",
     image: "./images/1.jpg",
-    // properti lainnya tetap seperti semula
+    desc: "Insting utamamu adalah cari gratisan. Kamu bisa betah berjam-jam di depan minimarket, pura-pura lihat-lihat, padahal sebenarnya menunggu tester atau promo yang tidak jelas kapan datangnya.",
+    traits: "Hemat, peka terhadap promo, dan sangat jago cari tempat adem yang gratis.",
+    suitable: "Panitia bazar, bagian belanja di grup tongkrongan, atau sekadar penjaga tester di mal.",
+    quote: "Kalau bisa gratis, kenapa harus bayar?",
   },
   B: {
     title: "Remaja Jompo",
     image: "./images/2.jpg",
-    // properti lainnya tetap seperti semula
+    desc: "Tenagamu selalu habis lebih cepat dari jadwal. Kamu lebih sering rebahan dan koyo jadi sahabat setia, sementara ajakan keluar rumah selalu kalah oleh kasur yang nyaman.",
+    traits: "Hemat energi, rutin pegal-pegal, dan selalu siap sedia minyak angin di saku.",
+    suitable: "Penguji kasur, duta minyak angin, atau kepala divisi rebahan resmi.",
+    quote: "Energi terbatas, istirahat adalah prioritas.",
   },
   C: {
     title: "Warga Penonton Proyek Jalanan",
     image: "./images/3.jpg",
-    // properti lainnya tetap seperti semula
+    desc: "Kamu tipe yang paham dunia lewat pengamatan. Dari teras, pinggir jalan, atau kursi warung, kamu bisa menikmati hidup tanpa perlu ikut sibuk, dan tontonan sekitar sudah cukup jadi hiburan.",
+    traits: "Santai, sabar, suka memperhatikan sekitar, dan jarang terburu-buru.",
+    suitable: "Pengamat lapangan, kritikus kehidupan sehari-hari, atau pengawas proyek dadakan.",
+    quote: "Dunia adalah panggung, aku penonton VIP.",
   },
   D: {
     title: "Raja Sein Kiri Belok Kanan",
     image: "./images/4.jpg",
-    // properti lainnya tetap seperti semula
+    desc: "Rencana itu sekadar saran buatmu. Kamu berani berangkat tanpa peta, percaya pada insting, dan sering berakhir di tempat yang tak pernah direncanakan, entah itu kejutan manis atau nyasar sampai dua kali.",
+    traits: "Spontan, percaya diri, kreatif dalam mencari jalan, dan lampu sein sering jadi hiasan.",
+    suitable: "Pemandu wisata dadakan, pencari jalan pintas, atau ketua acara yang rundownnya selalu berubah.",
+    quote: "Rencana itu penting, improvisasi lebih sering terjadi.",
   },
   E: {
     title: "Anak Kos Penyintas Akhir Bulan",
     image: "./images/5.jpg",
-    // properti lainnya tetap seperti semula
+    desc: "Kamu hafal setiap rupiah dan sangat teliti mengatur uang. Akhir bulan adalah ujian terberat, tapi kamu selalu punya strategi: menyusun menu hemat, menghitung ongkos, dan menyelamatkan diri dengan mi instan.",
+    traits: "Hemat, teliti, pandai menghitung, dan selalu punya stok mi instan di kos.",
+    suitable: "Bendahara kelas, pengelola anggaran tongkrongan, atau juara lomba hemat akhir bulan.",
+    quote: "Sedikit demi sedikit, yang penting saldo aman.",
   },
 };

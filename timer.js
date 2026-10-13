@@ -1,16 +1,22 @@
-// Timer per soal, bisa dinonaktifkan pengguna.
-export const QUESTION_SECONDS = 30;
+// Timer per soal. Durasi bisa dipilih pengguna (lihat TIMER_OPTIONS).
+export const TIMER_OPTIONS = [15, 30, 60];
+export const QUESTION_SECONDS = 30; // durasi default
 export const URGENT_SECONDS = 5;
-export function createQuizTimer({ onTick, onTimeout }) {
+export function createQuizTimer({
+  onTick,
+  onTimeout,
+  seconds = QUESTION_SECONDS,
+}) {
+  const totalMs = seconds * 1000;
   let intervalId = null,
-    timeLeftMs = QUESTION_SECONDS * 1000;
+    timeLeftMs = totalMs;
   function stop() {
     if (intervalId !== null) clearInterval(intervalId);
     intervalId = null;
   }
   function tick() {
     timeLeftMs = Math.max(0, timeLeftMs - 100);
-    onTick(timeLeftMs, QUESTION_SECONDS);
+    onTick(timeLeftMs, seconds);
     if (timeLeftMs <= 0) {
       stop();
       onTimeout();
@@ -18,8 +24,8 @@ export function createQuizTimer({ onTick, onTimeout }) {
   }
   function start() {
     stop();
-    timeLeftMs = QUESTION_SECONDS * 1000;
-    onTick(timeLeftMs, QUESTION_SECONDS);
+    timeLeftMs = totalMs;
+    onTick(timeLeftMs, seconds);
     intervalId = setInterval(tick, 100);
   }
   function pause() {
@@ -31,7 +37,7 @@ export function createQuizTimer({ onTick, onTimeout }) {
   }
   function reset() {
     stop();
-    timeLeftMs = QUESTION_SECONDS * 1000;
+    timeLeftMs = totalMs;
   }
   return { start, stop, pause, resume, reset, getTimeLeft: () => timeLeftMs };
 }
