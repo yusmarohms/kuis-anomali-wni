@@ -1,0 +1,1 @@
+Tempatkan gambar hero di sini sebagai kuis-anomali-hero.png. Foto hasil pribadi dapat disiapkan dengan nama hasil-a.png sampai hasil-e.png jika nanti ingin ditampilkan. Saat ini foto hasil sengaja dikosongkan sesuai permintaan. Untuk Open Graph, tambahkan og-cover.png (disarankan 1200x630).

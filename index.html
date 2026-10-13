@@ -1,92 +1,432 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#fff8ec">
-    <meta name="description" content="Jawab 5 pertanyaan seru dan cari tahu jenis Anomali WNI seperti apa kamu.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fff8ec" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kuis Anomali WNI — Kamu yang Mana?" />
+    <meta
+      property="og:description"
+      content="Jawab 10 pertanyaan acak dalam 30 detik per soal dan temukan karakter Anomali WNI-mu."
+    />
+    <meta property="og:image" content="images/og-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kuis Anomali WNI — Kamu yang Mana?" />
+    <meta
+      name="twitter:description"
+      content="Temukan karakter Anomali WNI-mu."
+    />
+    <meta name="twitter:image" content="images/og-cover.png" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Jawab 10 pertanyaan acak dan cari tahu jenis Anomali WNI seperti apa kamu."
+    />
     <title>Kuis Kepribadian: Kamu Anomali WNI yang Mana?</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="min-h-screen">
-    <main class="quiz-shell relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-8 sm:px-6 sm:py-10">
-        <div class="ambient ambient-one" aria-hidden="true"></div>
-        <div class="ambient ambient-two" aria-hidden="true"></div>
-        <div class="ambient ambient-three" aria-hidden="true"></div>
-        <div class="ambient ambient-four" aria-hidden="true"></div>
+    <link rel="stylesheet" href="utilities.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen">
+    <main
+      class="quiz-shell relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-8 sm:px-6 sm:py-10"
+    >
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+      <div class="ambient ambient-three" aria-hidden="true"></div>
+      <div class="ambient ambient-four" aria-hidden="true"></div>
 
-        <div class="relative z-10 w-full max-w-5xl">
-            <header class="topbar mb-5 flex items-center justify-between gap-4 sm:mb-6">
-                <div class="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.17em]">
-                    <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
-                    <span class="topbar-label">Kuis Anomali WNI</span>
+      <div class="relative z-10 w-full max-w-5xl">
+        <header
+          class="topbar mb-5 flex items-center justify-between gap-4 sm:mb-6"
+        >
+          <div
+            class="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.17em]"
+          >
+            <span class="brand-mark" aria-hidden="true"
+              ><span></span><span></span><span></span
+            ></span>
+            <span class="topbar-label">Kuis Anomali WNI</span>
+          </div>
+          <div class="flex shrink-0 items-center gap-2">
+            <button
+              id="sound-toggle"
+              class="theme-toggle inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2.5 text-xs font-bold"
+              type="button"
+              aria-label="Efek suara"
+              aria-pressed="true"
+              title="Matikan efek suara"
+            >
+              <span aria-hidden="true" id="sound-icon">🔊</span>
+              <span class="theme-toggle-label" id="sound-label"
+                >Suara nyala</span
+              >
+            </button>
+            <button
+              id="theme-toggle"
+              class="theme-toggle inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2.5 text-xs font-bold"
+              type="button"
+              aria-label="Dark mode"
+              aria-pressed="false"
+              title="Aktifkan dark mode"
+            >
+              <svg
+                class="theme-icon theme-icon-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m16.8 4.2.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6.6-1.5Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <svg
+                class="theme-icon theme-icon-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span class="theme-toggle-label">Mode gelap</span>
+            </button>
+          </div>
+        </header>
+
+        <section
+          class="quiz-card relative overflow-hidden rounded-[2rem] p-5 sm:rounded-[2.5rem] sm:p-8 lg:p-10"
+          aria-label="Kuis kepribadian Anomali WNI"
+        >
+          <div class="card-topline" aria-hidden="true"></div>
+
+          <div id="start-screen" class="d-block">
+            <div class="start-layout">
+              <div class="hero-panel">
+                <div class="hero-image-frame">
+                  <img
+                    class="hero-image"
+                    src="images/kuis-anomali-hero.png"
+                    alt="Ilustrasi ceria berisi es teh, helm, tas belanja, minyak angin, dan ekskavator mini"
+                  />
                 </div>
-                <button id="theme-toggle" class="theme-toggle inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2.5 text-xs font-bold" type="button" aria-label="Dark mode" aria-pressed="false" title="Aktifkan dark mode">
-                    <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m16.8 4.2.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6.6-1.5Z" fill="currentColor"/></svg>
-                    <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                    <span class="theme-toggle-label">Mode gelap</span>
+                <div class="hero-caption">
+                  <span class="caption-dot" aria-hidden="true"></span> sepuluh
+                  soal, satu kepribadian unik
+                </div>
+              </div>
+
+              <div class="start-copy text-center lg:text-left">
+                <div
+                  class="eyebrow mx-auto mb-4 w-fit rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.16em] lg:mx-0"
+                >
+                  personality quiz
+                </div>
+                <p
+                  class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]"
+                >
+                  siap-siap ketahuan
+                </p>
+                <h1
+                  class="display-title mb-4 text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl"
+                >
+                  Kamu <span>Anomali</span><br />WNI yang mana?
+                </h1>
+                <p
+                  class="intro-copy mx-auto mb-7 max-w-md text-base leading-7 lg:mx-0"
+                >
+                  Berani bongkar seberapa random kelakuanmu di mata masyarakat?
+                  Cek Khodam WNI-mu sekarang.
+                </p>
+                <label class="timer-setting" for="timer-enabled">
+                  <input id="timer-enabled" type="checkbox" checked />
+                  <span>Mode timer 30 detik per soal</span>
+                </label>
+                <button
+                  id="start-btn"
+                  class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-extrabold sm:w-auto sm:min-w-64"
+                  type="button"
+                >
+                  Mulai kuis
+                  <span class="button-arrow" aria-hidden="true">→</span>
                 </button>
-            </header>
+                <button
+                  id="show-all-btn"
+                  class="secondary-btn mt-3 w-full rounded-2xl px-6 py-3 text-sm font-bold sm:w-auto sm:min-w-64"
+                  type="button"
+                >
+                  Lihat semua hasil
+                </button>
+                <p class="tiny-note mt-5 text-xs font-semibold">
+                  Bentar aja kok. Jawab yang jujur.
+                </p>
+                <p
+                  id="last-result-note"
+                  class="last-result-note d-none mx-auto mt-3 w-fit text-xs font-bold lg:mx-0"
+                ></p>
+                <p
+                  class="play-badge mx-auto mt-3 w-fit text-xs font-bold lg:mx-0"
+                >
+                  🎮 Sudah dimainkan <span class="play-count">0</span> kali di
+                  perangkat ini
+                </p>
+              </div>
+            </div>
+          </div>
 
-            <section class="quiz-card relative overflow-hidden rounded-[2rem] p-5 sm:rounded-[2.5rem] sm:p-8 lg:p-10" aria-label="Kuis kepribadian Anomali WNI">
-                <div class="card-topline" aria-hidden="true"></div>
+          <div
+            id="question-screen"
+            class="d-none mx-auto w-full max-w-2xl text-left"
+          >
+            <div class="mb-7 flex items-center justify-between gap-4">
+              <span
+                class="eyebrow rounded-full px-3 py-2 text-[11px] font-extrabold uppercase tracking-wider"
+                >pilih yang paling menggambarkan dirimu</span
+              >
+              <p
+                id="progress-text"
+                class="progress-label m-0 text-sm font-bold"
+              >
+                Soal 1 dari 10
+              </p>
+            </div>
+            <div class="mb-3 flex items-center justify-between gap-3">
+              <button
+                id="back-btn"
+                class="back-btn rounded-full px-4 py-2 text-xs font-bold"
+                type="button"
+              >
+                ← Kembali
+              </button>
+              <p
+                id="timer-text"
+                class="timer-text m-0 text-sm font-bold"
+                role="timer"
+                aria-live="off"
+                aria-label="Sisa waktu untuk soal ini"
+              >
+                ⏱ 30 detik tersisa
+              </p>
+              <span
+                id="timer-announcement"
+                class="sr-only"
+                aria-live="polite"
+              ></span>
+            </div>
+            <div class="timer-track mb-4" aria-hidden="true">
+              <div id="timer-bar" class="timer-fill" style="width: 100%"></div>
+            </div>
+            <div
+              class="progress-track mb-8"
+              role="progressbar"
+              aria-label="Kemajuan kuis"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            >
+              <div
+                id="progress-bar"
+                class="progress-fill"
+                style="width: 0%"
+              ></div>
+            </div>
+            <p
+              class="section-kicker mb-3 text-xs font-extrabold uppercase tracking-[0.2em]"
+            >
+              pertanyaan
+            </p>
+            <h2
+              id="question-text"
+              class="question-title mb-7 text-2xl font-bold leading-snug sm:text-3xl"
+              aria-live="polite"
+            >
+              Teks pertanyaan akan muncul di sini
+            </h2>
+            <div
+              id="options-container"
+              class="d-grid gap-2"
+              aria-label="Pilihan jawaban"
+            ></div>
+            <p class="tiny-note mt-5 text-xs font-semibold">
+              Tips: tekan tombol angka 1-5 di keyboard untuk memilih jawaban.
+            </p>
+          </div>
 
-                <div id="start-screen" class="d-block">
-                    <div class="start-layout">
-                        <div class="hero-panel">
-                            <div class="hero-image-frame">
-                                <img class="hero-image" src="images/kuis-anomali-hero.png" alt="Ilustrasi ceria berisi es teh, helm, tas belanja, minyak angin, dan ekskavator mini">
-                            </div>
-                            <div class="hero-caption"><span class="caption-dot" aria-hidden="true"></span> lima soal, satu kepribadian unik</div>
-                        </div>
+          <div
+            id="result-screen"
+            class="d-none mx-auto w-full max-w-2xl text-center"
+          >
+            <div class="result-confetti mx-auto mb-5" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p
+              class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]"
+            >
+              hasil investigasi selesai
+            </p>
+            <p class="result-intro mb-3 text-base font-semibold">
+              Karakter aslimu adalah...
+            </p>
+            <div class="result-image-frame mx-auto mb-5">
+              <img id="result-image" class="result-image" src="" alt="" />
+              <span
+                id="result-emoji"
+                class="result-emoji d-none"
+                aria-hidden="true"
+                >⭐</span
+              >
+            </div>
+            <h2
+              id="result-title"
+              class="result-title mb-6 text-3xl font-bold leading-tight sm:text-4xl"
+            >
+              Nama Anomali
+            </h2>
+            <div class="result-panel rounded-2xl p-5 text-left sm:p-6">
+              <p id="result-desc" class="m-0 text-base leading-7">
+                Deskripsi karakter akan muncul di sini.
+              </p>
+            </div>
+            <div
+              id="result-details"
+              class="result-details result-panel rounded-2xl p-5 mt-4 text-left sm:p-6"
+            ></div>
+            <p
+              id="secondary-result"
+              class="secondary-result mt-4 text-sm font-semibold"
+            ></p>
+            <div class="result-breakdown mt-5 text-left">
+              <p
+                class="section-kicker mb-3 text-xs font-extrabold uppercase tracking-[0.2em]"
+              >
+                persentase kecocokan
+              </p>
+              <div id="percent-list" class="percent-list"></div>
+            </div>
+            <div class="result-actions mt-7">
+              <button
+                id="download-btn"
+                class="secondary-btn rounded-2xl px-6 py-4 text-base font-bold"
+                type="button"
+              >
+                Unduh kartu hasil <span aria-hidden="true">↓</span>
+              </button>
+              <button
+                id="share-btn"
+                class="primary-btn rounded-2xl px-6 py-4 text-base font-extrabold"
+                type="button"
+              >
+                <span id="share-label">Bagikan hasil</span>
+                <span class="button-arrow" aria-hidden="true">⧉</span>
+              </button>
+              <button
+                id="restart-btn"
+                class="secondary-btn rounded-2xl px-6 py-4 text-base font-bold"
+                type="button"
+              >
+                Main lagi <span class="button-arrow" aria-hidden="true">↻</span>
+              </button>
+            </div>
+            <button
+              id="result-all-btn"
+              class="back-btn mt-4 rounded-full px-5 py-2.5 text-xs font-bold"
+              type="button"
+            >
+              Lihat semua hasil
+            </button>
+            <div class="social-share" aria-label="Bagikan ke platform">
+              <button
+                type="button"
+                id="share-native-btn"
+                class="share-platform"
+              >
+                Bagikan di HP
+              </button>
+              <button type="button" id="share-wa-btn" class="share-platform">
+                WhatsApp
+              </button>
+              <button type="button" id="share-x-btn" class="share-platform">
+                X
+              </button>
+              <button
+                type="button"
+                id="share-telegram-btn"
+                class="share-platform"
+              >
+                Telegram
+              </button>
+            </div>
+            <p
+              id="share-status"
+              class="share-status mt-3 text-sm font-semibold"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <p class="play-badge mt-2 text-xs font-bold">
+              🎮 Kuis sudah dimainkan <span class="play-count">0</span> kali di
+              perangkat ini
+            </p>
+          </div>
+          <div
+            id="all-results-screen"
+            class="d-none mx-auto w-full text-center"
+          >
+            <p
+              class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]"
+            >
+              koleksi karakter
+            </p>
+            <h2 class="question-title mb-2 text-2xl font-bold sm:text-3xl">
+              Semua hasil kuis
+            </h2>
+            <p
+              id="collection-progress"
+              class="intro-copy mb-6 text-sm font-semibold"
+            ></p>
+            <div id="all-results-grid" class="all-results-grid text-left"></div>
+            <button
+              id="all-back-btn"
+              class="secondary-btn mt-7 rounded-2xl px-6 py-3 text-sm font-bold"
+              type="button"
+            >
+              ← Kembali
+            </button>
+          </div>
+        </section>
 
-                        <div class="start-copy text-center lg:text-left">
-                            <div class="eyebrow mx-auto mb-4 w-fit rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.16em] lg:mx-0">personality quiz</div>
-                            <p class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]">siap-siap ketahuan</p>
-                            <h1 class="display-title mb-4 text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl">Kamu <span>Anomali</span><br>WNI yang mana?</h1>
-                            <p class="intro-copy mx-auto mb-7 max-w-md text-base leading-7 lg:mx-0">Berani bongkar seberapa random kelakuanmu di mata masyarakat? Cek Khodam WNI-mu sekarang.</p>
-                            <button id="start-btn" class="primary-btn w-full rounded-2xl px-6 py-4 text-base font-extrabold sm:w-auto sm:min-w-64" type="button">
-                                Mulai kuis <span class="button-arrow" aria-hidden="true">→</span>
-                            </button>
-                            <p class="tiny-note mt-5 text-xs font-semibold">Bentar aja kok. Jawab yang jujur.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="question-screen" class="d-none mx-auto w-full max-w-2xl text-left">
-                    <div class="mb-7 flex items-center justify-between gap-4">
-                        <span class="eyebrow rounded-full px-3 py-2 text-[11px] font-extrabold uppercase tracking-wider">pilih yang paling menggambarkan dirimu</span>
-                        <p id="progress-text" class="progress-label m-0 text-sm font-bold">Soal 1 dari 5</p>
-                    </div>
-                    <div class="progress-track mb-8" role="progressbar" aria-label="Kemajuan kuis" aria-valuemin="0" aria-valuemax="100">
-                        <div id="progress-bar" class="progress-fill" style="width: 20%;"></div>
-                    </div>
-                    <p class="section-kicker mb-3 text-xs font-extrabold uppercase tracking-[0.2em]">pertanyaan</p>
-                    <h2 id="question-text" class="question-title mb-7 text-2xl font-bold leading-snug sm:text-3xl" aria-live="polite">Teks pertanyaan akan muncul di sini</h2>
-                    <div id="options-container" class="d-grid gap-2" aria-label="Pilihan jawaban"></div>
-                </div>
-
-                <div id="result-screen" class="d-none mx-auto w-full max-w-2xl text-center">
-                    <div class="result-confetti mx-auto mb-5" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-                    <p class="section-kicker mb-2 text-xs font-extrabold uppercase tracking-[0.2em]">hasil investigasi selesai</p>
-                    <p class="result-intro mb-3 text-base font-semibold">Karakter aslimu adalah...</p>
-                    <h2 id="result-title" class="result-title mb-6 text-3xl font-bold leading-tight sm:text-4xl">Nama Anomali</h2>
-                    <div class="result-panel rounded-2xl p-5 text-left sm:p-6">
-                        <p id="result-desc" class="m-0 text-base leading-7">Deskripsi karakter akan muncul di sini.</p>
-                    </div>
-                    <button id="restart-btn" class="secondary-btn mt-7 w-full rounded-2xl px-6 py-4 text-base font-bold sm:w-auto sm:min-w-64" type="button">
-                        Main lagi <span class="button-arrow" aria-hidden="true">↻</span>
-                    </button>
-                </div>
-            </section>
-
-            <p class="footer-note mt-5 text-center text-[10px] font-bold tracking-[0.15em]">BUAT SERU-SERUAN AJA <span aria-hidden="true">·</span> JANGAN DIANGGAP TERLALU SERIUS</p>
-        </div>
+        <p
+          class="footer-note mt-5 text-center text-[10px] font-bold tracking-[0.15em]"
+        >
+          BUAT SERU-SERUAN AJA <span aria-hidden="true">·</span> JANGAN DIANGGAP
+          TERLALU SERIUS
+        </p>
+      </div>
     </main>
-    <script src="script.js"></script>
-</body>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
