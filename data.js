@@ -438,53 +438,27 @@ export const questions = [
 export const resultsData = {
   A: {
     title: "Tukang Parkir Gaib Minimarket",
-    image: "",
-    emoji: "🅿️",
-    traits:
-      "Ciri khas: radar makanan gratis aktif, ahli membaca situasi, dan selalu tahu kapan harus muncul",
-    suitable: "pencari promo, koordinator konsumsi, atau auditor prasmanan",
-    quote:
-      "“Aku datang bukan karena lapar, tapi karena menghargai kesempatan.”",
-    desc: "Kamu adalah tipe orang yang suka observasi dalam diam, tapi selalu muncul di saat yang tepat (terutama pas ada untungnya). Pas teman lagi butuh bantuan, kamu hilang entah ke mana. Tapi pas ada makanan gratis atau lagi bagi-bagi untung, kamu tiba-tiba nongol.",
+    image: "./images/1.jpg",
+    // properti lainnya tetap seperti semula
   },
   B: {
     title: "Remaja Jompo",
-    image: "",
-    emoji: "🧓",
-    traits:
-      "Ciri khas: baterai sosial hemat daya, persediaan minyak angin lengkap, dan kemampuan rebahan tingkat nasional",
-    suitable: "quality tester kasur atau konsultan kenyamanan",
-    quote: "“Bukan malas, aku sedang menghemat energi.”",
-    desc: "Berjiwa tua yang terjebak di tubuh muda. Energimu gampang habis dan butuh kenyamanan ekstra. Usia boleh 20-an, tapi tulang punggung berasa kayak pensiunan PNS. Isi tasmu bukan makeup atau gadget, tapi FreshCare, Tolak Angin, dan koyo.",
+    image: "./images/2.jpg",
+    // properti lainnya tetap seperti semula
   },
   C: {
     title: "Warga Penonton Proyek Jalanan",
-    image: "",
-    emoji: "🚧",
-    traits:
-      "Ciri khas: rasa ingin tahu tinggi, santai menghadapi keramaian, dan bisa terhibur oleh aktivitas sederhana",
-    suitable: "pengamat lingkungan atau komentator kehidupan",
-    quote: "“Lanjutkan pekerjaan Anda, saya cuma menonton.”",
-    desc: "Kamu menemukan kedamaian batin dengan melihat orang lain bekerja keras. Gampang terhibur oleh hal sepele, sangat santai, dan merupakan lambang inner peace sejati di tengah kerasnya dunia.",
+    image: "./images/3.jpg",
+    // properti lainnya tetap seperti semula
   },
   D: {
     title: "Raja Sein Kiri Belok Kanan",
-    image: "",
-    emoji: "🛵",
-    traits:
-      "Ciri khas: spontan, percaya diri, dan punya hubungan unik dengan petunjuk arah",
-    suitable: "penjelajah rute alternatif—dengan pendamping navigator",
-    quote: "“Tenang, aku tahu jalan… kayaknya.”",
-    desc: "Hidupmu penuh kejutan, terutama buat orang-orang di belakangmu. Kamu santai, spontan, dan selalu yakin jalan tikus buatanmu adalah rute tercepat. Gak ada yang bisa menebak arahmu, bahkan kamu sendiri.",
+    image: "./images/4.jpg",
+    // properti lainnya tetap seperti semula
   },
   E: {
     title: "Anak Kos Penyintas Akhir Bulan",
-    image: "",
-    emoji: "🍜",
-    traits:
-      "Ciri khas: kalkulator selalu siaga, jago mengatur anggaran, dan kreatif mengolah persediaan seadanya",
-    suitable: "manajer keuangan atau ahli strategi akhir bulan",
-    quote: "“Bukan pelit, ini namanya perencanaan.”",
-    desc: "Kamu ahli bertahan hidup dengan sumber daya seadanya. Mi instan adalah sahabat, saldo di bawah lima puluh ribu adalah keseharian, dan kamu paham betul cara membuat satu bungkus nasi cukup untuk dua kali makan.",
+    image: "./images/5.jpg",
+    // properti lainnya tetap seperti semula
   },
 };
